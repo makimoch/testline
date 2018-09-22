@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>じゃんけん</title>
+</head>
+
+<body>
+    <div id="message1">
+        <h3>CPUの手: なにかな〜</h3>
+    </div>
+    <div id="message2">
+        <h3>結果: セレクトボックスから選択して決定ボタンを押してください。</h3>
+    </div>
+    <form>
+        <select id="janken">
+            <option>ぐー</option>
+            <option>ちょき</option>
+            <option>ぱー</option>
+        </select>
+        <input type="button" value="これでしょうぶ" onclick="myGame()">
+    </form>
+    <script>
+        function myGame() {
+            // 自分が選択したじゃんけんの手
+            var myte = document.getElementById("janken").selectedIndex;
+            // CPUのじゃんけんの手の番号
+            var cpunum = Math.floor(Math.random() * 3);
+            // CPUのじゃんけんの手
+            var cpuhand;
+            // 判定
+            var judge;
+
+            if (cpunum == 0) {
+                cpuhand = "ぐー";
+            } else if (cpunum == 1) {
+                cpuhand = "ちょき";
+            } else if (cpunum == 2) {
+                cpuhand = "ぱー";
+            }
+
+            if (myte == 0 && cpunum == 1) {
+                judge = "あなたの勝ち";
+            } else if (myte == 1 && cpunum == 2) {
+                judge = "あなたの勝ち";
+            } else if (myte == 2 && cpunum == 0) {
+                judge = "あなたの勝ち";
+            } else if (myte == cpunum) {
+                judge = "ひきわけ";
+            } else {
+                judge = "あなたの負け";
+            }
+
+            document.getElementById("message1").innerHTML = "<h3>CPUの手: " + cpuhand + "</h3>";
+            document.getElementById("message2").innerHTML = "<h3>結果: " + judge + "</h3>";
+        }
+    </script>
+</body>
+
+</html>
